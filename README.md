@@ -41,4 +41,4 @@ venv\Scripts\activate.bat
 
 ### 5. View the App
 
-Point your favorite web browser to [localhost:10101/decisiontree](http://localhost:10101/myapp)
+Point your favorite web browser to [localhost:10101/myapp](http://localhost:10101/myapp)

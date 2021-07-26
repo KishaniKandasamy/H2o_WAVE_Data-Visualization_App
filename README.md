@@ -1,6 +1,7 @@
 # Data Visualisation with UI Upload & Download
 
-This application allows us to  accept the dataset from the user  and visualise data in various ways.
+This application allows us to  accept the dataset  from the user  in csv format  and visualise data in various ways.
+Here I used a subset of dataset available in https://www.kaggle.com/dataislife8/credit-card-fraud-detection-visualizations
 
 ## Running this App Locally
 

@@ -3,6 +3,14 @@
 This application allows us to  accept the dataset  from the user  in csv format  and visualise data in various ways.
 Here I used a subset of dataset available in https://www.kaggle.com/dataislife8/credit-card-fraud-detection-visualizations
 
+![Data Visualisation with UI Upload & Download screen 1](screenshots/app1.png)
+
+![Data Visualisation with UI Upload & Download screen 2](screenshots/app2.png)
+
+![Data Visualisation with UI Upload & Download screen 3](screenshots/app3.png)
+
+![Data Visualisation with UI Upload & Download screen 4](screenshots/app4.png)
+
 ## Running this App Locally
 
 ### System Requirements

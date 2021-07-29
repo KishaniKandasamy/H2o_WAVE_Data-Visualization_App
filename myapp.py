@@ -1,13 +1,6 @@
 from h2o_wave  import Q, main, app, ui,site,data
 import pandas as pd 
-import numpy as np
-import matplotlib.pyplot as plt
-import random
-
 import os
-import time
-import logging
-
 
 @app('/myapp')
 async def serve(q: Q):
@@ -21,20 +14,16 @@ async def serve(q: Q):
 
 
 def initialize_app_for_new_client(q):
-    
-
     q.page['header'] = ui.header_card(
-        box='1 1 11 1',
-        title='Wave Data Visualisation with UI Uploads and Downloads',
+        box='1 1 10 1',
+        title='Wave Data Visualisation with UI Upload',
         subtitle='-Creditcard Fraud Detection',
     )
 
     render_upload_view(q)
     render_table_view(q)
     
-    
-
-    # Create a place to hold datasets where you are running wave
+    # Create a place to store the dataset where the wave is running
     q.client.data_path = './data'
     if not os.path.exists(q.client.data_path):
         os.mkdir(q.client.data_path)
@@ -42,9 +31,7 @@ def initialize_app_for_new_client(q):
     # Flag that this browser has been prepped
     q.client.initialized = True
 
-
 def render_upload_view(q: Q):
-    """Sets up the upload-dataset card"""
     q.page['upload'] = ui.form_card(
         box='1 2 3 -1',
         items=[
@@ -58,23 +45,18 @@ def render_upload_view(q: Q):
     )
 
 def render_table_view(q: Q):
-    """Sets up the view a file as ui.table card"""
-
     items = [ui.separator(label='View the Dataset')]
 
     if q.client.working_file_path is None:
-        items.append(ui.message_bar(type='warning', text='Please upload a dataset!'))
+        items.append(ui.message_bar(type='warning', text='Please upload a dataset FIRST!'))
     else:
         items.append(ui.text_xl(os.path.basename(q.client.working_file_path)))
         items.append(ui.message_bar(type='success', text='Files uploaded successfully !'))
-        items.append(make_ui_table(file_path=q.client.working_file_path, n_rows=10, name='head_of_table'))
-   
+        items.append(make_ui_table(file_path=q.client.working_file_path, n_rows=100, name='head_of_table'))
 
-    q.page['table'] = ui.form_card(box='4 2 8 -1', items=items)
+    q.page['table'] = ui.form_card(box='4 2 7 -1', items=items)
 
 def make_ui_table(file_path: str, n_rows: int, name: str):
-    """Creates a ui.table object from a csv file"""
-
     df = pd.read_csv(file_path)
     n_rows = min(n_rows, df.shape[0])
 
@@ -87,7 +69,6 @@ def make_ui_table(file_path: str, n_rows: int, name: str):
     return table
 
 async def handle_uploaded_data(q: Q):
-    """Saves a file uploaded by a user from the UI"""
     data_path = q.client.data_path
 
     # Download new dataset to data directory
@@ -104,7 +85,7 @@ async def handle_uploaded_data(q: Q):
     df_bar_stacked=  df.loc[:200,['AMT_INCOME_TOTAL','NAME_INCOME_TYPE','NAME_FAMILY_STATUS']]
     print(df_bar_stacked)
     v = q.page.add('df_bar_stacked', ui.plot_card(
-    box='1 8 9 4',
+    box='1 7 10 5',
     title='Make a stacked column plot',
     data=data(fields=df_bar_stacked.columns.tolist(),rows=df_bar_stacked.values.tolist()),
     plot=ui.plot(marks=[
@@ -176,8 +157,4 @@ async def handle_uploaded_data(q: Q):
     ])
     ))
 
-
-    
     await q.page.save()
-
- 

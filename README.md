@@ -1,4 +1,4 @@
-# Data Visualisation with UI Upload & Download
+# Data Visualisation -By accepting .csv file from the user using  wave UI/Upload 
 
 This application allows us to  accept the dataset  from the user  in csv format  and visualise data in various ways.
 Here I used a subset of dataset available in https://www.kaggle.com/dataislife8/credit-card-fraud-detection-visualizations

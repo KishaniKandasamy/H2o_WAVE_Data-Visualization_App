@@ -52,4 +52,6 @@ venv\Scripts\activate.bat
 
 Point your favorite web browser to [localhost:10101/myapp](http://localhost:10101/myapp)
 
+### Full Page Screen
+
 ![Data Visualisation with UI Upload  screen](screenshots/FullpageScreenCapture.png)
